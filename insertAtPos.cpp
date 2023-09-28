@@ -10,6 +10,23 @@ class Node{
         this->next=NULL;
     }
 };
+void insertAtPos(Node* &head,int position,int d){
+Node* temp=head;
+int cnt=1;
+while(cnt<position-1){
+    temp=temp->next;
+    cnt++;
+}
+//creating a node for d
+Node* nodeToInsert= new Node(d);
+
+nodeToInsert->next=temp->next;
+temp->next=nodeToInsert;
+
+
+
+
+}
 void insertAtHead(Node* &head,int d){
     //new node create
 Node* temp=new Node(d);
@@ -41,6 +58,9 @@ Node* head=node1;
 Node* tail=node1;
 print(head);
 insertAtTail(tail,12);
+print(head);
+
+insertAtPos(head,2,22);
 print(head);
     return 0;
 }
