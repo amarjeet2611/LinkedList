@@ -42,18 +42,48 @@ curr->next=temp;
 }
 void print(Node* tail){
 Node* temp=tail;
-cout<<tail->data<<" ";
-while(tail->next!=temp){
+do{
     cout<<tail->data<<" ";
     tail=tail->next;
-}
-cout<<" ";
+}while(tail!=temp);
+cout<<endl;
 
 }
+void deleteNode(Node* &tail,int value){
+//empty list
+if(tail==NULL){
+    cout<<"list is empty, please check again"<<endl;
+    return; 
+}
+else{
+Node* prev=tail;
+Node* curr=prev->next;
+
+while(curr->data!=value){
+    prev=curr;
+    curr=curr->next;
+}
+prev->next=curr->next;
+// 1 node linked list 
+
+if(curr==prev){
+    tail=NULL;
+}
+if(tail==curr){
+    tail=prev;
+}
 
 
+if(tail==curr){
+    tail=prev;
+}
+curr->next=NULL;
+delete curr;
 
 
+}
+
+}
 
 int main(){
 Node* tail=NULL;
@@ -63,5 +93,12 @@ print(tail);
 
 insertNode(tail,3,7);
 print(tail);
+
+deleteNode(tail,3);
+print(tail);
+
     return 0;
+
+
+
 }
