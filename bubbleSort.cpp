@@ -12,7 +12,6 @@ public:
         this->next=NULL;
     }
 };
-
 void insert(Node*& head, int value) {
     Node* newNode = new Node(value);
     newNode->next = head;
